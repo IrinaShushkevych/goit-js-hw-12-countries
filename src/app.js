@@ -27,11 +27,9 @@ function getCountryFunc(name) {
         setCountryInfo(data[0]);
       }
     })
-    .catch(error => {
+    .catch(() => {
       hideElement();
-      error({
-        title: 'No informaion',
-      });
+      error({ title: 'No information' });
     });
 }
 
