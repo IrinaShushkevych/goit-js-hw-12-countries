@@ -13,16 +13,6 @@ li {
   width: 600px;
 }
 
-.country-none {
-  display: none;
-  padding-left: 30px;
-  font-size: 30px;
-  font-weight: bolt;
-  text-decoration: underline;
-  letter-spacing: 0.1em;
-  color: red;
-}
-
 .country-list {
   display: none;
   padding: 40px;

@@ -1,9 +1,10 @@
 import getCountry from './js/fetchCountries.js';
 import refs from './js/refs.js';
 const debounce = require('debounce');
+import PNotify from '../node_modules/pnotify/dist/es/PNotify.js';
+// import PNotify from 'node_modules/pnotify/dist/es/PNotify.js';
 
 function hideElement() {
-  refs.countryNone.style.display = 'none';
   refs.countryInfo.style.display = 'none';
   refs.countryList.style.display = 'none';
   removeEvent();
@@ -25,7 +26,10 @@ function getCountryFunc(name) {
 }
 
 function setCountryNoneMes() {
-  refs.countryNone.style.display = 'block';
+  PNotify.error({
+    title: 'No information',
+    text: 'Something terrible happened.',
+  });
 }
 
 function setCountryList(data) {
