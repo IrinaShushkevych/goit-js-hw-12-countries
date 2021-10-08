@@ -1,8 +1,14 @@
 import getCountry from './js/fetchCountries.js';
 import refs from './js/refs.js';
 const debounce = require('debounce');
-import PNotify from '../node_modules/pnotify/dist/es/PNotify.js';
-// import PNotify from 'node_modules/pnotify/dist/es/PNotify.js';
+
+import { error, defaultModules } from '../node_modules/@pnotify/core/dist/PNotify.js';
+import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import * as PNotifyCountdown from '@pnotify/countdown';
+
+defaultModules.set(PNotifyMobile, { swipeDismiss: false });
 
 function hideElement() {
   refs.countryInfo.style.display = 'none';
@@ -13,7 +19,9 @@ function hideElement() {
 function getCountryFunc(name) {
   getCountry(name)
     .then(data => {
-      if (data.length > 1) {
+      if (data.length > 10) {
+        error({ title: 'Too many matches found.', text: 'Please entera morespecific query!' });
+      } else if (data.length > 1) {
         setCountryList(data);
       } else {
         setCountryInfo(data[0]);
@@ -21,15 +29,10 @@ function getCountryFunc(name) {
     })
     .catch(error => {
       hideElement();
-      setCountryNoneMes();
+      error({
+        title: 'No informaion',
+      });
     });
-}
-
-function setCountryNoneMes() {
-  PNotify.error({
-    title: 'No information',
-    text: 'Something terrible happened.',
-  });
 }
 
 function setCountryList(data) {
