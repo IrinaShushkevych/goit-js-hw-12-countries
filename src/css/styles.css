@@ -16,9 +16,12 @@ li {
 .country-list {
   display: none;
   padding: 40px;
+  list-style: none;
 }
 
 .country-list li {
+  display: flex;
+  align-items: center;
   font-size: 18px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -55,4 +58,8 @@ li {
 .country-languages-list li {
   padding-top: 10px;
   padding-left: 10px;
+}
+
+.img-small {
+  margin-right: 30px;
 }
