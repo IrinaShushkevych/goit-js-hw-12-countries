@@ -46,13 +46,14 @@ li {
   font-weight: 700;
 }
 
-.country-block div {
-  width: 50%;
+.block-title {
+  display: flex;
+  align-items: center;
 }
 
 .country-flag {
-  width: 100%;
-  max-height: 500px;
+  width: 200px;
+  margin-right: 50px;
 }
 
 .country-languages-list li {
